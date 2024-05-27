@@ -84,7 +84,7 @@ add_subdirectory(togl)
 add_subdirectory(vguimatsurface)
 #endif()
 
-#add_subdirectory(game/client) #CSGO Client
+add_subdirectory(game/client) #CSGO Client
 add_subdirectory(game/server) #CSGO Server
 if( NOT DEDICATED )
 add_subdirectory(launcher)

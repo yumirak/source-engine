@@ -6,7 +6,7 @@ endif()
 if(WIN32)
     message(FATAL_ERROR "install gentoo")
 elseif(UNIX AND NOT APPLE) #LINUX
-    add_definitions(-DLINUX -D_LINUX -DPOSIX)
+    add_definitions(-DLINUX -D_LINUX -DPOSIX -D_POSIX)
     set(LINUXALL "1")
     set(POSIX "1")
     set(GL "1")
