@@ -11,6 +11,8 @@ set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
 set(OUTBINNAME "soundemittersystem")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
+set(NOSTINKYLINKIES "1")
+
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_dll_base.cmake)
 
@@ -23,4 +25,4 @@ target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/interval.cpp")
 target_sources(${OUTBINNAME} PRIVATE "soundemittersystembase.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/SoundParametersInternal.cpp")
 
-#target_link_libraries(${OUTBINNAME} tier2 libvstdlib)
+target_link_libraries(${OUTBINNAME} libtier0 tier1 libvstdlib)

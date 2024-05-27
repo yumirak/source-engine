@@ -470,10 +470,11 @@ target_sources(${OUTBINNAME} PRIVATE "toolframework_server.cpp") #
 		#$Lib	particles
 		#$Lib	tier2
 		#$Lib	tier3
-
-target_link_libraries(${OUTBINNAME} choreoobjects dmxloader mathlib libtier0 tier1 libvstdlib)
-target_link_libraries(${OUTBINNAME} particles tier2 tier3 )
-target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so) # Link to proprietary steamapi
+target_link_libraries(${OUTBINNAME} libtier0 particles dmxloader tier1 tier2 tier3 mathlib libvstdlib choreoobjects ${LIBPUBLIC}/libsteam_api.so)
+#libs = []
+#target_link_libraries(${OUTBINNAME} choreoobjects dmxloader mathlib libtier0 tier1 libvstdlib)
+#target_link_libraries(${OUTBINNAME} particles tier2 tier3 )
+#target_link_libraries(${OUTBINNAME} ) # Link to proprietary steamapi
 #target_link_libraries(${OUTBINNAME} kisak_gcsdk)
 #target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
 #target_link_libraries(${OUTBINNAME} bitmap dmxloader tier2)

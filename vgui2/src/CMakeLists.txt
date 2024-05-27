@@ -57,4 +57,4 @@ target_sources(${OUTBINNAME} PRIVATE "VPanel.cpp")
 target_sources(${OUTBINNAME} PRIVATE "VPanelWrapper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "keyrepeat.cpp")
 
-target_link_libraries(${OUTBINNAME} vgui_surfacelib tier2 tier3 )#libvstdlib)
+target_link_libraries(${OUTBINNAME} libvstdlib vgui_surfacelib tier2 tier3 )

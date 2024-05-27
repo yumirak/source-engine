@@ -17,16 +17,13 @@ include(${CMAKE_MODULE_PATH}/source_dll_base.cmake)
 set(SHADERAPIDX9DIR "shaderapidx9")
 set(SHADERLIBDIR "shaderlib")
 set(STDSHADERSDIR "stdshaders")
-
-add_definitions(-DDEFINE_MATERIALSYSTEM_INTERFACE -DMATERIALSYSTEM_EXPORTS -DPROTECTED_THINGS_ENABLE)
+set(NOSTINKYLINKIES "1")
+add_definitions(-DDEFINE_MATERIALSYSTEM_INTERFACE -DMATERIALSYSTEM_EXPORTS ) #-DPROTECTED_THINGS_ENABLE)
+add_definitions(-Dstrncpy=use_Q_strncpy_instead -D_snprintf=use_Q_snprintf_instead)
 
 if( DEDICATED )
     add_definitions(-DDEDICATED)
 endif()
-if( USE_SCALEFORM )
-    add_definitions(-DINCLUDE_SCALEFORM)
-endif()
-add_definitions(-DVERSION_SAFE_STEAM_API_INTERFACES)
 
 if( GL )
     add_definitions(-DGL_GLEXT_PROTOTYPES -DDX_TO_GL_ABSTRACTION)
@@ -52,9 +49,7 @@ target_sources(${OUTBINNAME} PRIVATE "morph.cpp")
 target_sources(${OUTBINNAME} PRIVATE "occlusionquerymgr.cpp")
 target_sources(${OUTBINNAME} PRIVATE "shadersystem.cpp")
 target_sources(${OUTBINNAME} PRIVATE "texturemanager.cpp")
-
 target_sources(${OUTBINNAME} PRIVATE "pch_materialsystem.cpp")
-
 target_sources(${OUTBINNAME} PRIVATE "cmaterialdict.cpp")
 target_sources(${OUTBINNAME} PRIVATE "cmaterialsystem.cpp")
 target_sources(${OUTBINNAME} PRIVATE "cmatlightmaps.cpp")
@@ -62,8 +57,8 @@ target_sources(${OUTBINNAME} PRIVATE "cmatrendercontext.cpp")
 target_sources(${OUTBINNAME} PRIVATE "cmatqueuedrendercontext.cpp")
 target_sources(${OUTBINNAME} PRIVATE "ctexturecompositor.cpp")
 
-
-target_link_libraries(${OUTBINNAME} bitmap mathlib shaderlib tier2 vtf)
+target_link_libraries(${OUTBINNAME} libtier0 tier1 tier2 libvstdlib mathlib bitmap shaderlib vtf)
+#libs = ['tier0','tier1','tier2','vstdlib','mathlib','bitmap','shaderlib','vtf']
 #tier3 libvstdlib
 #if building as dll..
 #$Implib togl [!$IS_LIB_PROJECT && $GL && !$DEDICATED]

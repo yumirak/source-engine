@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 3.16)
 project(serverbrowser)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "serverbrowser")
+set(OUTBINNAME "ServerBrowser")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -43,15 +43,5 @@ target_sources(${OUTBINNAME} PRIVATE "QuickListPanel.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/vgui_controls/vgui_controls.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/ServerBrowser/blacklisted_server_manager.cpp")
 
-if( (NOT DEFINED NO_STEAM) )
-    #grug
-    #Looks like we have to include libsteam_api
-    message("building with steam_api")
-    target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so)
-else()
-    #message(FATAL_ERROR "CMake steam_api integration is disabled.")
-    message(FATAL_ERROR "We have to build with steam currently =(")
-endif()
-
 #Careful with link order here.
-target_link_libraries(${OUTBINNAME} tier3 vgui_controls tier2 mathlib)
+target_link_libraries(${OUTBINNAME} libtier0 vgui_controls mathlib tier1 tier2 tier3 libvstdlib ${LIBPUBLIC}/libsteam_api.so)

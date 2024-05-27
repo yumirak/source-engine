@@ -23,7 +23,12 @@ add_definitions(-DVERSION_SAFE_STEAM_API_INTERFACES)
 target_sources(${OUTBINNAME} PRIVATE "inputsystem.cpp")
 target_sources(${OUTBINNAME} PRIVATE "steamcontroller.cpp")
 target_sources(${OUTBINNAME} PRIVATE "key_translation.cpp")
-target_sources(${OUTBINNAME} PRIVATE "key_translation.h")
+target_sources(${OUTBINNAME} PRIVATE "touch_sdl.cpp")
+target_sources(${OUTBINNAME} PRIVATE "joystick_sdl.cpp")
+
+if( WIN32 )
+    target_sources(${OUTBINNAME} PRIVATE "novint.cpp")
+endif()
 
 if( LINUXALL )
     target_link_libraries(${OUTBINNAME} SDL2)
