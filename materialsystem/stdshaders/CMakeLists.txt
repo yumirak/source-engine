@@ -11,7 +11,7 @@ set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
 set(OUTBINNAME "stdshader_dx9_client")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 set(STDSHADERSDIR ${CMAKE_CURRENT_SOURCE_DIR})
-
+set(NOSTINKYLINKIES "1")
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_dll_base.cmake)
 
@@ -45,11 +45,7 @@ target_sources(${OUTBINNAME} PRIVATE "compositor.cpp")
 target_sources(${OUTBINNAME} PRIVATE "core_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "color_projection.cpp")
 target_sources(${OUTBINNAME} PRIVATE "debugmrttexture.cpp")
-if(WIN32)
-target_sources(${OUTBINNAME} PRIVATE "debugmorphaccumulator_dx9.cpp")					#[$WIN32]
-target_sources(${OUTBINNAME} PRIVATE "morphaccumulate_dx9.cpp")					#[$WIN32]
-target_sources(${OUTBINNAME} PRIVATE "morphweight_dx9.cpp")						#[$WIN32]
-endif()
+		#'debugmorphaccumulator_dx9.cpp")					[$WIN32]
 target_sources(${OUTBINNAME} PRIVATE "DebugTextureView.cpp")
 target_sources(${OUTBINNAME} PRIVATE "DecalBaseTimesLightmapAlphaBlendSelfIllum_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "DecalModulate_dx9.cpp")
@@ -81,11 +77,14 @@ target_sources(${OUTBINNAME} PRIVATE "lightmappedgeneric_dx9_helper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "lightmappedreflective.cpp")
 target_sources(${OUTBINNAME} PRIVATE "modulate_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "MonitorScreen_dx9.cpp")
+		#'morphaccumulate_dx9.cpp")					[$WIN32]
+		#'morphweight_dx9.cpp")						[$WIN32]
 target_sources(${OUTBINNAME} PRIVATE "motion_blur_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "occlusion_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "particlelitgeneric_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "particlelitgeneric_dx9_helper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "particlesphere_dx9.cpp")
+target_sources(${OUTBINNAME} PRIVATE "pbr_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "portal.cpp")
 target_sources(${OUTBINNAME} PRIVATE "portalstaticoverlay.cpp")
 target_sources(${OUTBINNAME} PRIVATE "portal_refract.cpp")
@@ -93,7 +92,7 @@ target_sources(${OUTBINNAME} PRIVATE "portal_refract_helper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "pyro_vision.cpp")
 target_sources(${OUTBINNAME} PRIVATE "refract.cpp")
 target_sources(${OUTBINNAME} PRIVATE "refract_dx9_helper.cpp")
-#target_sources(${OUTBINNAME} PRIVATE "rendertargetblit_x360.cpp")					#[$X360]
+		#'rendertargetblit_x360.cpp")					[$X360]
 target_sources(${OUTBINNAME} PRIVATE "sample4x4.cpp")
 target_sources(${OUTBINNAME} PRIVATE "sample4x4_blend.cpp")
 target_sources(${OUTBINNAME} PRIVATE "screenspace_general.cpp")
@@ -133,8 +132,10 @@ target_sources(${OUTBINNAME} PRIVATE "worldvertextransition.cpp")
 target_sources(${OUTBINNAME} PRIVATE "worldvertextransition_dx8_helper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "writez_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "writestencil_dx9.cpp")
+target_sources(${OUTBINNAME} PRIVATE "eyeball.cpp")
 
-target_link_libraries(${OUTBINNAME} mathlib_client shaderlib_client )#libvstdlib_client)
+#// careful linking
+target_link_libraries(${OUTBINNAME} libtier0_client shaderlib_client tier1_client mathlib_client  )#libvstdlib_client)
 
 
 #This is missing some of the shader-building code... See stdshader_dx9.vpc.
