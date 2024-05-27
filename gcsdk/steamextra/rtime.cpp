@@ -4,10 +4,11 @@
 //
 //=============================================================================
 
-#include "stdafx.h"
+
 #ifdef POSIX
 #include <sys/time.h>
 #else
+#include "stdafx.h"
 #include "winlite.h"
 #endif
 #include "rtime.h"
@@ -250,7 +251,7 @@ void CRTime::UpdateRealTime()
 	if ( sm_nTimeCur < nTimePrev )
 	{
 		// time can go backwards sometimes if clock sync adjusts system time; warn when this happens
-		EmitInfo( SPEW_SYSTEM_MISC, SPEW_ALWAYS, LOG_ALWAYS, "Warning: system time went backward by %d seconds\n", ( nTimePrev - sm_nTimeCur ) );
+		EmitInfo( GCSDK::SPEW_SYSTEM_MISC, SPEW_ALWAYS, LOG_ALWAYS, "Warning: system time went backward by %d seconds\n", ( nTimePrev - sm_nTimeCur ) );
 	}
 
 	// update our time from file time once per second

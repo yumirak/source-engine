@@ -8,6 +8,9 @@
 #ifndef MISC_H
 #define MISC_H
 
+#include <tier1/strtools.h>
+#include <tier0/dbg.h>
+
 // Random number utilities
 uint32 UNRandFast();
 char CHRandFast();

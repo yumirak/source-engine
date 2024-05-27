@@ -117,7 +117,7 @@ public:
 	const CMsgProtoBufHeader &ConstHdr() const	{ return *m_pProtoBufHdr; }
 
 	MsgType_t	GetEMsg()			const		{ return m_eMsg & (~k_EMsgProtoBufFlag); }
-	CSteamID	GetClientSteamID()	const		{ return CSteamID( m_pProtoBufHdr->client_steam_id() ); }
+	CSteamID	GetClientSteamID()	const		{ return CSteamID( uint64(m_pProtoBufHdr->client_steam_id()) ); }
 	JobID_t		GetJobIDTarget()	const		{ return m_pProtoBufHdr->job_id_target(); }
 	JobID_t		GetJobIDSource()	const		{ return m_pProtoBufHdr->job_id_source(); }
 	AppId_t		GetSourceAppID()	const		{ return m_pProtoBufHdr->source_app_id(); }
@@ -379,8 +379,8 @@ public:
 		VPROF_BUDGET( "CProtoBufMsg::CProtoBufMsg( MsgType_t, CSteamID, int32 )", VPROF_BUDGETGROUP_OTHER_NETWORKING );
 
 		m_pProtoBufBody = AllocProto();
-		Hdr()->set_client_steam_id( steamIDClient.ConvertToUint64() );
-		Hdr()->set_client_session_id( nSessionIDClient );
+		Hdr().set_client_steam_id( steamIDClient.ConvertToUint64() );
+		Hdr().set_client_session_id( nSessionIDClient );
 	}
 
 	// Constructor from an incoming netpacket

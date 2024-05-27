@@ -4,14 +4,16 @@
 //
 // $NoKeywords: $
 //=============================================================================
-
+#ifdef _WIN32
+#include "stdafx.h"
+#endif
+#include <gcsdk/gcclientsdk.h>
 #ifdef TF
 #include "steamcommon.h"
 #define INCLUDED_STEAM2_USERID_STRUCTS
 #include "steam/steamclientpublic.h"
 #endif
 
-#include "stdafx.h"
 #ifdef HL1
 #include "steamcommon.h"
 #include "steam/steamclientpublic.h"

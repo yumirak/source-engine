@@ -23,6 +23,10 @@
 #pragma once
 #endif
 
+#include <tier0/threadtools.h>
+#include <tier1/utlvector.h>
+#include <gcsdk/gcsteamdefines.h>
+
 #undef new
 
 //-----------------------------------------------------------------------------

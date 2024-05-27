@@ -4,7 +4,11 @@
 //
 //=============================================================================
 
+#include "misc.h"
+
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

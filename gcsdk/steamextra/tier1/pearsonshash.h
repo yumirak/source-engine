@@ -13,6 +13,9 @@
 #ifndef _PEARSONSHASH_H_
 #define	_PEARSONSHASH_H_
 
+#include <tier0/platform.h>
+#include <tier1/strtools.h>
+
 #if defined(_WIN32) || defined(_WIN64)
 #pragma once
 #endif

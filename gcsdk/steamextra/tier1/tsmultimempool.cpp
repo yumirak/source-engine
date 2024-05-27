@@ -5,8 +5,11 @@
 // $NoKeywords: $
 //
 //=============================================================================//
+#include "tsmultimempool.h"
 
+#ifdef _WIN32
 #include <stdafx.h>
+#endif
 #include "tier0/t0constants.h"
 
 // memdbgon must be the last include file in a .cpp file!!!

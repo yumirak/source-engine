@@ -17,7 +17,8 @@ char* strptime(const char *s, const char *format, struct tm *tm);
 #include <time.h>
 #include <ctype.h>
 #include <string.h>
-
+#include <steam/steamtypes.h>
+#include <gcsdk/gcclientsdk.h>
 
 
 class CSTime;
