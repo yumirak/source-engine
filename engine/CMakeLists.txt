@@ -11,9 +11,9 @@ if( DEDICATED )
 endif()
 
 cmake_minimum_required(VERSION 3.16)
-project(engine_client)
+project(engine)
 
-set(OUTBINNAME "engine_client")
+set(OUTBINNAME "engine")
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
@@ -368,9 +368,9 @@ target_sources(${OUTBINNAME} PRIVATE "enginetool.cpp") # [!$DEDICATED]
 endif()
 target_sources(${OUTBINNAME} PRIVATE "toolframework.cpp") #
 
-target_link_libraries(${OUTBINNAME} libtier0_client vgui_controls_client dmxloader_client tier1_client tier2_client tier3_client bitmap_client libvstdlib_client appframework_client datamodel_client vtf_client mathlib_client)
+target_link_libraries(${OUTBINNAME} libtier0 vgui_controls dmxloader tier1 tier2 tier3 bitmap libvstdlib appframework datamodel vtf mathlib)
 target_link_libraries(${OUTBINNAME} "${LIBPUBLIC}/libsteam_api.so") # Link to proprietary steamapi
-target_link_libraries(${OUTBINNAME} matsys_controls_client bzip2_client jpeglib_client z openal curl )
+target_link_libraries(${OUTBINNAME} matsys_controls bzip2 jpeglib z openal curl )
 target_link_libraries(${OUTBINNAME} SDL2 rt )#ssl crypto)
 
 

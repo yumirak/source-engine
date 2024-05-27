@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(vgui2_client)
+project(vgui2)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "vgui2_client")
+set(OUTBINNAME "vgui2")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -57,4 +57,4 @@ target_sources(${OUTBINNAME} PRIVATE "VPanel.cpp")
 target_sources(${OUTBINNAME} PRIVATE "VPanelWrapper.cpp")
 target_sources(${OUTBINNAME} PRIVATE "keyrepeat.cpp")
 
-target_link_libraries(${OUTBINNAME} vgui_surfacelib_client tier2_client tier3_client )#libvstdlib_client)
+target_link_libraries(${OUTBINNAME} vgui_surfacelib tier2 tier3 )#libvstdlib)

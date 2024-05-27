@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(tier2_client)
+project(tier2)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "tier2_client")
+set(OUTLIBNAME "tier2")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)

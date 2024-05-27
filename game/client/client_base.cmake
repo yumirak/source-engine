@@ -7,7 +7,7 @@ MacroRequired( GAMENAME )
 
 set(NOSTINKYLINKIES "1")
 
-set(OUTBINNAME "client_client")
+set(OUTBINNAME "client")
 set(OUTBINDIR "${SRCDIR}/../game/${GAMENAME}/bin")
 #set(GENERATED_PROTO_DIR "${SRCDIR}/game/server/generated_proto")
 
@@ -537,10 +537,10 @@ target_sources(${OUTBINNAME} PRIVATE "toolframework_client.cpp") #
 #		$Libexternal "$LIBCOMMON/libssl" [$LINUXALL]
 
 
-target_link_libraries(${OUTBINNAME} bitmap_client choreoobjects_client  dmxloader_client mathlib_client matsys_controls_client particles_client )
-target_link_libraries(${OUTBINNAME} libtier0_client tier1_client  tier2_client tier3_client libvstdlib_client vgui_controls_client vtf_client )
+target_link_libraries(${OUTBINNAME} bitmap choreoobjects  dmxloader mathlib matsys_controls particles )
+target_link_libraries(${OUTBINNAME} libtier0 tier1  tier2 tier3 libvstdlib vgui_controls vtf )
 target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so) # Link to proprietary steamapi
 target_link_libraries(${OUTBINNAME} curl z ssl)
-#target_link_libraries(${OUTBINNAME} kisak_gcsdk_client)
+#target_link_libraries(${OUTBINNAME} kisak_gcsdk)
 #target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
-#target_link_libraries(${OUTBINNAME} bitmap_client dmxloader_client tier2_client)
+#target_link_libraries(${OUTBINNAME} bitmap dmxloader tier2)

@@ -7,7 +7,7 @@ MacroRequired( GAMENAME )
 
 set(NOSTINKYLINKIES "1")
 
-set(OUTBINNAME "server_client")
+set(OUTBINNAME "server")
 set(OUTBINDIR "${SRCDIR}/../game/${GAMENAME}/bin")
 #set(GENERATED_PROTO_DIR "${SRCDIR}/game/server/generated_proto")
 
@@ -471,9 +471,9 @@ target_sources(${OUTBINNAME} PRIVATE "toolframework_server.cpp") #
 		#$Lib	tier2
 		#$Lib	tier3
 
-target_link_libraries(${OUTBINNAME} choreoobjects_client dmxloader_client mathlib_client libtier0_client tier1_client libvstdlib_client)
-target_link_libraries(${OUTBINNAME} particles_client tier2_client tier3_client )
+target_link_libraries(${OUTBINNAME} choreoobjects dmxloader mathlib libtier0 tier1 libvstdlib)
+target_link_libraries(${OUTBINNAME} particles tier2 tier3 )
 target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so) # Link to proprietary steamapi
-#target_link_libraries(${OUTBINNAME} kisak_gcsdk_client)
+#target_link_libraries(${OUTBINNAME} kisak_gcsdk)
 #target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
-#target_link_libraries(${OUTBINNAME} bitmap_client dmxloader_client tier2_client)
+#target_link_libraries(${OUTBINNAME} bitmap dmxloader tier2)

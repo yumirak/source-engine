@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(choreoobjects_client)
+project(choreoobjects)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "choreoobjects_client")
+set(OUTLIBNAME "choreoobjects")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)

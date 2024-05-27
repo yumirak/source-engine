@@ -10,7 +10,7 @@ elseif(UNIX AND NOT APPLE) #LINUX
     set(LINUXALL "1")
     set(POSIX "1")
     set(GL "1")
-    set(_DLL_EXT "_client.so")
+    set(_DLL_EXT ".so")
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         add_definitions(-DLINUX64)
         set(LINUX64 "1")

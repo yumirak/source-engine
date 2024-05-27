@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(materialsystem_client)
+project(materialsystem)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "materialsystem_client")
+set(OUTBINNAME "materialsystem")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -63,7 +63,7 @@ target_sources(${OUTBINNAME} PRIVATE "cmatqueuedrendercontext.cpp")
 target_sources(${OUTBINNAME} PRIVATE "ctexturecompositor.cpp")
 
 
-target_link_libraries(${OUTBINNAME} bitmap_client mathlib_client shaderlib_client tier2_client vtf_client)
-#tier3_client libvstdlib_client
+target_link_libraries(${OUTBINNAME} bitmap mathlib shaderlib tier2 vtf)
+#tier3 libvstdlib
 #if building as dll..
 #$Implib togl [!$IS_LIB_PROJECT && $GL && !$DEDICATED]

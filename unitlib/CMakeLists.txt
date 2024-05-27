@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(unitlib_client)
+project(unitlib)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "unitlib_client")
+set(OUTBINNAME "unitlib")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)

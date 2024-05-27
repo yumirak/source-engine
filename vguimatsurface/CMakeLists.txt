@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(vguimatsurface_client)
+project(vguimatsurface)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "vguimatsurface_client")
+set(OUTBINNAME "vguimatsurface")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 #set(NOSTINKYLINKIES "1") #this project requires precise linking
@@ -41,7 +41,7 @@ target_sources(${OUTBINNAME} PRIVATE "TextureDictionary.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/vgui2/src/vgui_key_translation.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/vgui_controls/vgui_controls.cpp")
 
-target_link_libraries(${OUTBINNAME} vgui_controls_client vgui_surfacelib_client tier2_client tier3_client mathlib_client bitmap_client )
+target_link_libraries(${OUTBINNAME} vgui_controls vgui_surfacelib tier2 tier3 mathlib bitmap )
 
 if( LINUXALL )
     target_link_libraries(${OUTBINNAME} fontconfig freetype SDL2)

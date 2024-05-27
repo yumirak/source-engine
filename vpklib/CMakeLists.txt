@@ -2,10 +2,10 @@
 #//	VPKLIB.VPC
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(vpklib_client)
+project(vpklib)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "vpklib_client")
+set(OUTLIBNAME "vpklib")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)

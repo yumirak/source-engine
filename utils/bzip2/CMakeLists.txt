@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(bzip2_client)
+project(bzip2)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "bzip2_client")
+set(OUTLIBNAME "bzip2")
 set(OUTLIBDIR "${SRCDIR}/lib/common/linux64") #this one goes in common
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)

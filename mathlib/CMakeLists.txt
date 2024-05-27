@@ -10,7 +10,7 @@ set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 
 ## Build the regular mathlib ##
-set(OUTLIBNAME "mathlib_client")
+set(OUTLIBNAME "mathlib")
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)
 include_directories(../public/mathlib)
 target_compile_definitions(${OUTLIBNAME} PRIVATE -DMATHLIB_LIB)

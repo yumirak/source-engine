@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
-project(datamodel_client)
+project(datamodel)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "datamodel_client")
+set(OUTLIBNAME "datamodel")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)

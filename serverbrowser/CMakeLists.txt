@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(serverbrowser_client)
+project(serverbrowser)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "serverbrowser_client")
+set(OUTBINNAME "serverbrowser")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -54,4 +54,4 @@ else()
 endif()
 
 #Careful with link order here.
-target_link_libraries(${OUTBINNAME} tier3_client vgui_controls_client tier2_client mathlib_client)
+target_link_libraries(${OUTBINNAME} tier3 vgui_controls tier2 mathlib)

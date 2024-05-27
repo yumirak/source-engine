@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(soundemittersystem_client)
+project(soundemittersystem)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "soundemittersystem_client")
+set(OUTBINNAME "soundemittersystem")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -23,4 +23,4 @@ target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/interval.cpp")
 target_sources(${OUTBINNAME} PRIVATE "soundemittersystembase.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/SoundParametersInternal.cpp")
 
-#target_link_libraries(${OUTBINNAME} tier2_client libvstdlib_client)
+#target_link_libraries(${OUTBINNAME} tier2 libvstdlib)

@@ -23,4 +23,4 @@ endif()
 target_sources(${OUTBINNAME} PRIVATE "videoservices.cpp")
 target_sources(${OUTBINNAME} PRIVATE "../public/tier0/memoverride.cpp")
 
-target_link_libraries(${OUTBINNAME} tier2_client tier3_client libvstdlib_client mathlib_client )
+target_link_libraries(${OUTBINNAME} tier2 tier3 libvstdlib mathlib )

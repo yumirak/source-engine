@@ -4,10 +4,10 @@
 #//	Project Script for the Game Coordinator SDK
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(kisak_gcsdk_client)
+project(kisak_gcsdk)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "kisak_gcsdk_client")
+set(OUTLIBNAME "kisak_gcsdk")
 set(GENERATED_PROTO_DIR "${SRCDIR}/gcsdk/generated_proto")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)

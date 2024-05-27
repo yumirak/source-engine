@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(libtogl_client)
+project(libtogl)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "libtogl_client") #also the target name
+set(OUTBINNAME "libtogl") #also the target name
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 set(TOGL_SRCDIR "${SRCDIR}/togl/linuxwin")
@@ -60,4 +60,4 @@ endif()
 #// Link
 #//-----------------------------------------------------------------------------
 
-target_link_libraries(${OUTBINNAME} tier2_client libvstdlib_client mathlib_client )
+target_link_libraries(${OUTBINNAME} tier2 libvstdlib mathlib )

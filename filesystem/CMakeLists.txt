@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(filesystem_stdio_client)
+project(filesystem_stdio)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "filesystem_stdio_client")
+set(OUTBINNAME "filesystem_stdio")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -32,4 +32,4 @@ if( POSIX )
     target_sources(${OUTBINNAME} PRIVATE "linux_support.cpp")
 endif()
 
-target_link_libraries(${OUTBINNAME} libtier0_client vpklib_client tier1_client tier2_client libvstdlib_client)
+target_link_libraries(${OUTBINNAME} libtier0 vpklib tier1 tier2 libvstdlib)

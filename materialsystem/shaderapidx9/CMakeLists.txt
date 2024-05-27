@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(shaderapidx9_client)
+project(shaderapidx9)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "shaderapidx9_client")
+set(OUTBINNAME "shaderapidx9")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -64,10 +64,10 @@ target_sources(${OUTBINNAME} PRIVATE "winutils.cpp")							#[!$WIN32]
 endif()
 
 if( GL )
-    target_link_libraries(${OUTBINNAME} libtogl_client)
+    target_link_libraries(${OUTBINNAME} libtogl)
 endif()
 
-target_link_libraries(${OUTBINNAME} bitmap_client mathlib_client tier2_client  bzip2_client ) #vtf_client
+target_link_libraries(${OUTBINNAME} bitmap mathlib tier2  bzip2 ) #vtf
 
 if( WINDOWS )
     if( NOT GL )

@@ -5,10 +5,10 @@
 #//-----------------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.16)
-project(stdshader_dx9_client)
+project(stdshader_dx9)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "stdshader_dx9_client")
+set(OUTBINNAME "stdshader_dx9")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 set(STDSHADERSDIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(NOSTINKYLINKIES "1")
@@ -135,7 +135,7 @@ target_sources(${OUTBINNAME} PRIVATE "writestencil_dx9.cpp")
 target_sources(${OUTBINNAME} PRIVATE "eyeball.cpp")
 
 #// careful linking
-target_link_libraries(${OUTBINNAME} libtier0_client shaderlib_client tier1_client mathlib_client  )#libvstdlib_client)
+target_link_libraries(${OUTBINNAME} libtier0 shaderlib tier1 mathlib  )#libvstdlib)
 
 
 #This is missing some of the shader-building code... See stdshader_dx9.vpc.

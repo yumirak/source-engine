@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.16)
 project(bitmap_libraries)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "bitmap_client")
+set(OUTLIBNAME "bitmap")
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
 include(${CMAKE_MODULE_PATH}/source_lib_base.cmake)

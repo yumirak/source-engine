@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(libtier0_client)
+project(libtier0)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "libtier0_client")
+set(OUTBINNAME "libtier0")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 set(NOSTINKYLINKIES "1")

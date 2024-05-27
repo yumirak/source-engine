@@ -4,10 +4,10 @@
 #//	Project Script
 #//-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
-project(appframework_client)
+project(appframework)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTLIBNAME "appframework_client")
+set(OUTLIBNAME "appframework")
 set(AF_SRCDIR "${SRCDIR}/appframework")
 set(AF_INCDIR "${SRCDIR}/public/appframework")
 

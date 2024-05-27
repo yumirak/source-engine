@@ -9,10 +9,10 @@ if( DEDICATED )
     return()
 endif()
 
-project(inputsystem_client)
+project(inputsystem)
 set(SRCDIR "${CMAKE_SOURCE_DIR}")
 set(CMAKE_MODULE_PATH ${SRCDIR}/cmake)
-set(OUTBINNAME "inputsystem_client")
+set(OUTBINNAME "inputsystem")
 set(OUTBINDIR ${SRCDIR}/../game/bin)
 
 include(${CMAKE_MODULE_PATH}/detect_platform.cmake)
@@ -29,6 +29,6 @@ if( LINUXALL )
     target_link_libraries(${OUTBINNAME} SDL2)
 endif()
 
-target_link_libraries(${OUTBINNAME} tier2_client )#mathlib_client)
+target_link_libraries(${OUTBINNAME} tier2 )#mathlib)
 #Requires evil proprietary link to libsteam_api
 target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so)
