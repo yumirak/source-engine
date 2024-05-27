@@ -85,7 +85,7 @@ add_subdirectory(vguimatsurface)
 #endif()
 
 #add_subdirectory(game/client) #CSGO Client
-#add_subdirectory(game/server) #CSGO Server
+add_subdirectory(game/server) #CSGO Server
 if( NOT DEDICATED )
 add_subdirectory(launcher)
 add_subdirectory(launcher_main) #The actual executable that just dlopen's launcher
