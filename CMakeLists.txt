@@ -23,7 +23,7 @@ project(KisakStrike)
 include(build-options.cmake)
 
 add_subdirectory(appframework)
-#add_subdirectory(external/crypto++-5.61)
+add_subdirectory(external/crypto++-5.61)
 
 add_subdirectory(gcsdk)
 add_subdirectory(tier0)
@@ -45,17 +45,16 @@ add_subdirectory(utils/jpeglib)
 add_subdirectory(unitlib)
 #if( NOT DEDICATED )
 add_subdirectory(video)
-#add_subdirectory(avi)
 #endif()
 add_subdirectory(vtf)
 add_subdirectory(bitmap) #also does bitmap_byteswap
 add_subdirectory(choreoobjects)
 add_subdirectory(datacache)
 add_subdirectory(datamodel)
-#if( DEDICATED )
+if( DEDICATED )
 #add_subdirectory(dedicated)
 #add_subdirectory(dedicated_main)
-#endif()
+endif()
 add_subdirectory(dmxloader)
 #if( NOT DEDICATED)
 #add_subdirectory(engine/voice_codecs/minimp3)
@@ -87,7 +86,7 @@ add_subdirectory(vguimatsurface)
 
 #add_subdirectory(game/client) #CSGO Client
 #add_subdirectory(game/server) #CSGO Server
-#if( NOT DEDICATED )
-#add_subdirectory(launcher)
-#add_subdirectory(launcher_main) #The actual executable that just dlopen's launcher
-#endif()
+if( NOT DEDICATED )
+add_subdirectory(launcher)
+add_subdirectory(launcher_main) #The actual executable that just dlopen's launcher
+endif()
