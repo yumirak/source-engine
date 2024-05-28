@@ -15,5 +15,6 @@ set(CLISRCDIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(NOSTINKYLINKIES "1")
 
-include( ./client_hl2.cmake )
+#include( ./client_hl2.cmake )
+include( ./client_tf.cmake )
 #include( ./server_econ_base.cmake )

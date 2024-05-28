@@ -74,7 +74,9 @@ target_sources(${OUTBINNAME} PRIVATE "geiger.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "history_resource.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "hud_weapon.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "train.cpp") #
+if(NOT GAMENAME STREQUAL "tf")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/weapon_parse_default.cpp") #
+endif()
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/achievement_saverestore.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/achievementmgr.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/achievements_hlx.cpp") #
