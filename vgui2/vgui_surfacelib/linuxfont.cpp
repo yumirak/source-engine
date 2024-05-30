@@ -20,9 +20,7 @@
 #include <tier0/dbg.h>
 #include <vgui/ISurface.h>
 #include <utlbuffer.h>
-#if HAVE_FC
 #include <fontconfig/fontconfig.h>
-#endif
 #include <freetype/ftbitmap.h>
 #include "materialsystem/imaterialsystem.h"
 
@@ -98,7 +96,6 @@ void CLinuxFont::CreateFontList()
 	if ( m_FriendlyNameCache.Count() > 0 ) 
 		return;
 
-#if HAVE_FC
 	if(!FcInit())
 		return;
     FcConfig *config;
@@ -168,10 +165,8 @@ void CLinuxFont::CreateFontList()
     FcObjectSetDestroy(os);
     FcPatternDestroy(pat);
 
-#endif
 }
 
-#if HAVE_FC
 static FcPattern* FontMatch(const char* type, ...)
 {
     FcValue fcvalue;
@@ -210,7 +205,6 @@ static FcPattern* FontMatch(const char* type, ...)
 
     return match;
 }
-#endif
 
 bool CLinuxFont::CreateFromMemory(const char *windowsFontName, void *data, int datasize, int tall, int weight, int blur, int scanlines, int flags)
 {
@@ -410,7 +404,7 @@ bool CLinuxFont::CreateFromMemory(const char *windowsFontName, void *data, int d
 #include "tier1/convar.h"
 ConVar cl_language( "cl_language", "english", FCVAR_USERINFO, "Language (from HKCU\\Software\\Valve\\Steam\\Language)" );
 
-#if !HAVE_FC
+#if 0
 char *TryFindFont(const char *winFontName, bool bBold, int italic)
 {
 	static char fontFile[MAX_PATH];
@@ -508,12 +502,6 @@ char *CLinuxFont::GetFontFileName( const char *windowsFontName, int flags )
 	else if ( !Q_stricmp( pchFontName, "Arial Black" ) || Q_stristr( pchFontName, "bold" ) )
 		bBold = true;
 
-#if !HAVE_FC
-	char *filename = TryFindFont( windowsFontName, bBold, flags & vgui::ISurface::FONTFLAG_ITALIC );
-	if( !filename ) return NULL;
-	Msg("Found font: %s\n", filename);
-	return strdup( filename );
-#else
 	const int italic = ( flags & vgui::ISurface::FONTFLAG_ITALIC ) ? FC_SLANT_ITALIC : FC_SLANT_ROMAN;
 
 	const int nFcWeight = bBold ? FC_WEIGHT_BOLD : FC_WEIGHT_NORMAL;
@@ -545,7 +533,6 @@ char *CLinuxFont::GetFontFileName( const char *windowsFontName, int flags )
 
 		return filenameret;
 	}
-#endif
 }
 
 //-----------------------------------------------------------------------------

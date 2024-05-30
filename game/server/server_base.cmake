@@ -390,6 +390,7 @@ target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/keyframe/keyframe.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/language.cpp") #						/
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/map_utils.cpp") #						/
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/networkvar.cpp") #						/
+target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/steamid.cpp")
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/randoverride.cpp") #					/
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/registry.cpp") #						/
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/rope_physics.cpp") #					/
