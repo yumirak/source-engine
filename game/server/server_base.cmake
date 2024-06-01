@@ -11,7 +11,7 @@ set(OUTBINNAME "server")
 set(OUTBINDIR "${SRCDIR}/../game/${GAMENAME}/bin")
 #set(GENERATED_PROTO_DIR "${SRCDIR}/game/server/generated_proto")
 
-add_definitions(-DGAME_DLL -DVECTOR -DVERSION_SAFE_STEAM_API_INTERFACES -DPROTECTED_THINGS_ENABLE)
+add_definitions(-DGAME_DLL -DVECTOR -DVERSION_SAFE_STEAM_API_INTERFACES -DSWDS)
 add_definitions(-Dstrncpy=use_Q_strncpy_instead -D_snprintf=use_Q_snprintf_instead)
 
 include_directories(${SRCDIR}/game/shared)

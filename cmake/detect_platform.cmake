@@ -11,6 +11,7 @@ elseif(UNIX AND NOT APPLE) #LINUX
     set(POSIX "1")
     set(GL "1")
     set(_DLL_EXT ".so")
+    add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         add_definitions(-DLINUX64)
         set(LINUX64 "1")

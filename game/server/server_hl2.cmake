@@ -10,13 +10,13 @@ cmake_minimum_required(VERSION 3.16)
 set(GAMENAME "hl2")
 set(NOSTINKYLINKIES "1")
 
-add_definitions(-DHL2_DLL -DUSES_SAVERESTORE)
+add_definitions(-DHL2_DLL -DUSES_SAVERESTORE -DDISABLE_STEAM=1)
 
 include( ./server_base.cmake )
 #include( ./server_econ_base.cmake )
 
 if( LINUXALL )
-    target_compile_options(${OUTBINNAME} PRIVATE "-Wno-narrowing")
+    #target_compile_options(${OUTBINNAME} PRIVATE "-Wno-narrowing")
 endif()
 include_directories(${SRCDIR}/game/shared/hl2)
 include_directories(${SRCDIR}/game/server/hl2)
