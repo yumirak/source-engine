@@ -346,7 +346,7 @@ public:
 	void OnPrepare() { Msg().Body().set_match_id( ReliableMsgCheckUpdateMatchID( Msg().Body().match_id() ) ); }
 	const char *MsgName() { return "PlayerLeftMatch"; }
 	void InitDebugString( CUtlString &dbgStr ) { dbgStr.Format( "Player %s, Match %llx, Lobby %llx",
-	                                                            CSteamID( Msg().Body().steam_id() ).Render(),
+	                                                            CSteamID( uint64(Msg().Body().steam_id() )).Render(),
 	                                                            Msg().Body().match_id(), Msg().Body().lobby_id() ); }
 };
 
@@ -364,7 +364,7 @@ public:
 	void OnPrepare() { Msg().Body().set_match_id( ReliableMsgCheckUpdateMatchID( Msg().Body().match_id() ) ); }
 	const char *MsgName() { return "PlayerVoteKickedAfterLeavingMatch"; }
 	void InitDebugString( CUtlString &dbgStr ) { dbgStr.Format( "Player %s, Match %llx, Lobby %llx",
-	                                                            CSteamID( Msg().Body().steam_id() ).Render(),
+	                                                            CSteamID(  uint64(Msg().Body().steam_id() )).Render(),
 	                                                            Msg().Body().match_id(), Msg().Body().lobby_id() ); }
 };
 
@@ -1365,7 +1365,7 @@ public:
 	{
 		GCSDK::CProtoBufMsg<CMsgGC_KickPlayerFromLobby> msg( pNetPacket );
 
-		CSteamID steamID( msg.Body().targetid() );
+		CSteamID steamID( uint64( msg.Body().targetid() ));
 		if ( steamID.IsValid() )
 		{
 			GTFGCClientSystem()->EjectMatchPlayer( steamID, TFMatchLeaveReason_ADMIN_KICK );
@@ -2343,7 +2343,7 @@ void CTFGCServerSystem::SOUpdated( const CSteamID & steamIDOwner, const GCSDK::C
 			if ( !pMemberDetails )
 				continue;
 
-			CSteamID steamID( pMemberDetails->id() );
+			CSteamID steamID( uint64(pMemberDetails->id() ));
 			CTFLobbyMember_ConnectState eLobbyState = pLobby->GetMemberConnectState( i );
 
 			if ( eLobbyState == CTFLobbyMember_ConnectState_RESERVATION_PENDING )
@@ -2648,7 +2648,11 @@ void CTFGCServerSystem::UpdateConnectedPlayersAndServerInfo( CMsgGameServerMatch
 		bool bActive = false;
 		if ( engine->GetPlayerInfo( i, &sPlayerInfo ) )
 		{
-			if ( sPlayerInfo.ishltv || sPlayerInfo.isreplay )
+			if ( sPlayerInfo.ishltv
+				#if defined( REPLAY_ENABLED )
+				|| sPlayerInfo.isreplay
+				#endif
+			)
 			{
 				++nAdminSlots;
 				continue;
@@ -2869,7 +2873,7 @@ void CTFGCServerSystem::UpdateConnectedPlayersAndServerInfo( CMsgGameServerMatch
 			Assert( pMemberDetails );
 			if ( !pMemberDetails )
 				continue;
-			CSteamID steamID( pMemberDetails->id() );
+			CSteamID steamID( uint64(pMemberDetails->id() ));
 
 			CTFLobbyMember_ConnectState eLobbyState = pLobby->GetMemberConnectState( i );
 			if ( dbg_spew_connected_players_level.GetInt() >= 4 )

@@ -69,7 +69,7 @@ public:
 		#endif
 		return result;
 	}
-	CSteamID GetSteamLobbyID() const { return CSteamID( Obj().steam_lobby_id() ); }
+	CSteamID GetSteamLobbyID() const { return CSteamID(  uint64(Obj().steam_lobby_id() )); }
 	int GetNumSearchingPlayers( int group );
 	int GetMaxNumSearchingPlayers(); // Returns the group with the largest number of players searching
 
@@ -169,7 +169,7 @@ class CTFPartyInvite : public GCSDK::CProtoBufSharedObject<CSOTFPartyInvite, k_E
 public:
 	const static int k_nTypeID = k_EProtoObjectTFPartyInvite;
 
-	virtual const CSteamID GetSenderID() const { return Obj().sender_id(); }
+	virtual const CSteamID GetSenderID() const { return CSteamID(uint64(Obj().sender_id())); }
 	virtual GCSDK::PlayerGroupID_t GetGroupID() const { return Obj().group_id(); }
 	virtual const char* GetSenderName() const { return Obj().sender_name().c_str(); }
 

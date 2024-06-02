@@ -35,7 +35,7 @@ const CSteamID CTFGSLobby::GetMember( int i ) const
 	if ( i < 0 || i >= Obj().members_size() )
 		return k_steamIDNil;
 
-	return Obj().members( i ).id();
+	return uint64 (Obj().members( i ).id());
 }
 
 CTFLobbyMember_ConnectState CTFGSLobby::GetMemberConnectState( int iMemberIndex ) const

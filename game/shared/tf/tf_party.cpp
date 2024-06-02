@@ -50,7 +50,7 @@ CTFParty::~CTFParty()
 
 const CSteamID CTFParty::GetLeader() const
 {
-	CSteamID steamID( Obj().leader_id() );
+	CSteamID steamID( uint64( Obj().leader_id() ));
 	return steamID;
 }
 
@@ -60,7 +60,7 @@ const CSteamID CTFParty::GetMember( int i ) const
 	if ( i < 0 || i >= Obj().member_ids_size() )
 		return k_steamIDNil;
 
-	return Obj().member_ids( i );
+	return  uint64(Obj().member_ids( i ));
 }
 
 int CTFParty::GetMemberIndexBySteamID( const CSteamID &steamID ) const
@@ -79,7 +79,7 @@ const CSteamID CTFParty::GetPendingInvite( int i ) const
 	if ( i < 0 || i >= Obj().pending_invites_size() )
 		return k_steamIDNil;
 
-	return Obj().pending_invites( i );
+	return uint64( Obj().pending_invites( i ) );
 }
 
 int CTFParty::GetPendingInviteIndexBySteamID( const CSteamID &steamID ) const
@@ -242,7 +242,7 @@ const CSteamID CTFPartyInvite::GetMember( int i ) const
 	if ( i < 0 || i >= Obj().members_size() )
 		return k_steamIDNil;
 
-	return Obj().members( i ).steam_id();
+	return uint64(Obj().members( i ).steam_id());
 }
 
 const char* CTFPartyInvite::GetMemberName( int i ) const

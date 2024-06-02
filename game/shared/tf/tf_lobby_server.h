@@ -41,7 +41,7 @@ public:
 	const char *GetMapName() const { return Obj().map_name().c_str(); }
 	GCSDK::PlayerGroupID_t GetGroupID() const { return Obj().lobby_id(); }
 	bool GetLateJoinEligible() const { return Obj().late_join_eligible(); }
-	CSteamID GetServerID() const { return Obj().server_id(); }
+	CSteamID GetServerID() const { return uint64( Obj().server_id()); }
 	const char *GetConnect() const { return Obj().connect().c_str(); }
 	uint32_t GetLobbyMMVersion() const { return Obj().lobby_mm_version(); }
 

@@ -31,7 +31,7 @@ class CLobbyInvite : public GCSDK::CProtoBufSharedObject<CSOLobbyInvite, k_EProt
 public:
 	const static int k_nTypeID = k_EProtoObjectLobbyInvite;
 
-	virtual const CSteamID GetSenderID() const { return Obj().sender_id(); }
+	virtual const CSteamID GetSenderID() const { return CSteamID(uint64(Obj().sender_id())); }
 	virtual PlayerGroupID_t GetGroupID() const { return Obj().group_id(); }
 	virtual const char* GetSenderName() const { return Obj().sender_name().c_str(); }
 

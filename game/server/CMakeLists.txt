@@ -18,4 +18,5 @@ set(SRVSRCDIR ${CMAKE_CURRENT_SOURCE_DIR})
 #add_definitions(-DBOTS -DCSTRIKE_DLL -DUSE_ECONOMY_FEATURES)
 
 #include( ./server_base.cmake )
-include( ./server_hl2.cmake )
+#include( ./server_hl2.cmake )
+include( ./server_tf.cmake )

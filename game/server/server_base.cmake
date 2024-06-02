@@ -68,7 +68,9 @@ target_sources(${OUTBINNAME} PRIVATE "ai_behavior_lead.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "ai_behavior_rappel.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "ai_behavior_standoff.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "ai_blended_movement.cpp") #
+if(NOT GAMENAME STREQUAL "tf")
 target_sources(${OUTBINNAME} PRIVATE "ai_concommands.cpp") #
+endif()
 target_sources(${OUTBINNAME} PRIVATE "ai_condition.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "AI_Criteria.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "ai_default.cpp") #
@@ -472,6 +474,10 @@ target_sources(${OUTBINNAME} PRIVATE "toolframework_server.cpp") #
 		#$Lib	tier2
 		#$Lib	tier3
 target_link_libraries(${OUTBINNAME} libtier0 particles dmxloader tier1 tier2 tier3 mathlib libvstdlib choreoobjects ${LIBPUBLIC}/libsteam_api.so)
+#if(GAMENAME STREQUAL "tf")
+target_link_libraries(${OUTBINNAME} kisak_gcsdk)
+target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
+#endif()
 #libs = []
 #target_link_libraries(${OUTBINNAME} choreoobjects dmxloader mathlib libtier0 tier1 libvstdlib)
 #target_link_libraries(${OUTBINNAME} particles tier2 tier3 )
