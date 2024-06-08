@@ -278,7 +278,7 @@ public:
 	virtual bool BYieldingRunGCJob( GCSDK::IMsgNetPacket *pNetPacket )
 	{
 		GCSDK::CProtoBufMsg<CMsgTFThankedBySomeone> msg( pNetPacket );
-		NotificationQueue_Add( new CWasThankedBySomeoneNotification( CSteamID( msg.Body().thanker_steam_id() ) ) );
+		NotificationQueue_Add( new CWasThankedBySomeoneNotification( CSteamID( uint64(msg.Body().thanker_steam_id() )) ) );
 		return true;
 	}
 };

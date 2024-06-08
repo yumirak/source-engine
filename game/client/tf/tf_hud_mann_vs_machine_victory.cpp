@@ -632,7 +632,7 @@ void CMvMVictoryMannUpEntry::UpdatePlayerData()
 		return;
 
 	m_pListPanel->RemoveAll();
-	CSteamID steamID = CSteamID( m_playerData.steam_id() );
+	CSteamID steamID = CSteamID( uint64(m_playerData.steam_id() ));
 
 	m_hPlayer = GetPlayerBySteamID( steamID );
 	// Setup our model panel
@@ -1762,7 +1762,7 @@ void CMvMVictoryMannUpPanel::LoadVictoryData()
 		// Show the first player
 		m_PlayerEntryPanels[iPlayer]->SetVisible( iPlayer == 0 );
 		// Setup the tab
-		CSteamID steamID = CSteamID( m_victoryInfo.players( iPlayer ).steam_id() );
+		CSteamID steamID = CSteamID( uint64(m_victoryInfo.players( iPlayer ).steam_id() ));
 		if ( iPlayer < m_vecTabs.Count() )
 		{
 			m_vecTabs[iPlayer]->SetPlayer( steamID );

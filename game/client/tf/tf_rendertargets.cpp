@@ -47,8 +47,9 @@ void CTFRenderTargets::InitClientRenderTargets( IMaterialSystem* pMaterialSystem
 	// rt for CModelImagePanel
 	int index = m_tfRenderTargets.AddToTail();
 	m_tfRenderTargets[index].Init( CreateItemModelPanelTexture( g_pszModelImagePanelRTName, pMaterialSystem, 256 ) );
-
+#if defined( REPLAY_ENABLED )
 	CReplayScreenshotTaker::CreateRenderTarget( pMaterialSystem );
+#endif
 }
 
 //-----------------------------------------------------------------------------

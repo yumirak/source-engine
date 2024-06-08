@@ -6,10 +6,6 @@
 # Possible Arguments used:
 # -DUSE_VALVE_HRTF
 #This is the non-dedicated engine
-if( DEDICATED )
-    return()
-endif()
-
 cmake_minimum_required(VERSION 3.16)
 project(engine)
 
@@ -75,7 +71,6 @@ target_sources(${OUTBINNAME} PRIVATE "cl_rcon.cpp") # [!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "cdll_engine_int.cpp") # [!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "cl_main.cpp") #		[!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "cl_demo.cpp") #		[!$DEDICATED]
-target_sources(${OUTBINNAME} PRIVATE "cl_null.cpp") #	[$DEDICATED]	/
 target_sources(${OUTBINNAME} PRIVATE "cl_demoaction.cpp") #	[!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "cl_demoaction_types.cpp") #  	[!$DEDICATED]	/
 target_sources(${OUTBINNAME} PRIVATE "cl_demoactioneditors.cpp") #	[!$DEDICATED] 	/
@@ -112,6 +107,9 @@ target_sources(${OUTBINNAME} PRIVATE "r_areaportal.cpp") #	[!$DEDICATED]	/
 target_sources(${OUTBINNAME} PRIVATE "r_efx.cpp") # [!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "view.cpp") # [!$DEDICATED]
 target_sources(${OUTBINNAME} PRIVATE "shadowmgr.cpp") #		[!$DEDICATED]
+else()
+target_sources(${OUTBINNAME} PRIVATE "cl_null.cpp") #	[$DEDICATED]	/
+target_sources(${OUTBINNAME} PRIVATE "sys_stubwind.cpp") #	[$DEDICATED]	/
 endif()
 
 
@@ -339,12 +337,13 @@ target_sources(${OUTBINNAME} PRIVATE "audio/snd_dev_openal.cpp") #	[$OSXALL]
 target_sources(${OUTBINNAME} PRIVATE "audio/snd_dev_mac_audioqueue.cpp") #	[$OSXALL]
 target_sources(${OUTBINNAME} PRIVATE "audio/voice_record_mac_audioqueue.cpp") #	[$OSXALL]
 endif()
-if( OSXALL OR LINUXALL )
+if( NOT DEDICATED AND (OSXALL OR LINUXALL) )
 target_sources(${OUTBINNAME} PRIVATE "audio/voice_mixer_controls_openal.cpp") #	[$OSXALL||($LINUXALL&&!$DEDICATED)]
 target_sources(${OUTBINNAME} PRIVATE "audio/voice_record_openal.cpp") #	[$OSXALL||($LINUXALL&&!$DEDICATED)]
 endif()
 
 		#$Folder	"VGUI Panels" [!$DEDICATED]
+if( NOT DEDICATED )
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/public/vgui_controls/vgui_controls.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/vgui/vgui_basebudgetpanel.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/vgui/vgui_budgetbargraphpanel.cpp") #
@@ -361,7 +360,7 @@ target_sources(${OUTBINNAME} PRIVATE "vgui_helpers.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "vgui_texturebudgetpanel.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "vgui_vprofgraphpanel.cpp") #
 target_sources(${OUTBINNAME} PRIVATE "vgui_vprofpanel.cpp") #
-
+endif()
 		#$Folder	"Tools Framework"
 if( NOT DEDICATED )
 target_sources(${OUTBINNAME} PRIVATE "enginetool.cpp") # [!$DEDICATED]

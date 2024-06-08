@@ -23,7 +23,7 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 set(LINUX_FLAGS_COMMON " -march=core2 -Wno-invalid-offsetof -Wno-ignored-attributes -Wno-enum-compare -Werror=return-type -Wno-write-strings ")
 set(LINUX_DEBUG_FLAGS " -ggdb3 -Og") # -fno-eliminate-unused-debug-symbols
-set(LINUX_RELEASE_FLAGS " -ggdb3 -O2 ")
+set(LINUX_RELEASE_FLAGS " -ggdb1 -O2 ")
 
 if (CMAKE_BUILD_TYPE STREQUAL "DEBUG")
     message(STATUS "Building in Debug mode")

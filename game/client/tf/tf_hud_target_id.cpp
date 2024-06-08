@@ -194,7 +194,7 @@ void CTargetID::FireGameEvent( IGameEvent * event )
 //-----------------------------------------------------------------------------
 bool CTargetID::DrawHealthIcon() 
 {
-	C_BaseEntity *pEnt = cl_entitylist->GetEnt( GetTargetIndex() );
+	C_BaseEntity *pEnt = cl_entitylist->GetEnt( IsPlayerIndex( GetTargetIndex() ) );
 	if ( pEnt && pEnt->IsBaseObject() )
 		return true;
 
@@ -1345,7 +1345,7 @@ void CSpectatorTargetID::PerformLayout( void )
 
 		if ( m_pBGPanel_Spec_Blue && m_pBGPanel_Spec_Red )
 		{
-			if ( m_iTargetEntIndex )
+			if ( m_iTargetEntIndex  && IsPlayerIndex(m_iTargetEntIndex) )
 			{
 				C_BaseEntity *pEnt = cl_entitylist->GetEnt( m_iTargetEntIndex );
 				if ( pEnt )

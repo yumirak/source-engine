@@ -516,12 +516,12 @@ target_sources(${OUTBINNAME} PRIVATE "toolframework_client.cpp") #
 
 
 target_link_libraries(${OUTBINNAME} libtier0 particles dmxloader vgui_controls matsys_controls tier1 tier2 tier3 mathlib libvstdlib choreoobjects ${LIBPUBLIC}/libsteam_api.so bitmap vtf z)
-
-
+target_link_libraries(${OUTBINNAME} curl ssl)
+target_link_libraries(${OUTBINNAME} kisak_gcsdk)
+target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
+target_link_libraries(${OUTBINNAME} cryptopp-object) #from /thirdparty
 #target_link_libraries(${OUTBINNAME} bitmap choreoobjects dmxloader mathlib matsys_controls particles )
 #target_link_libraries(${OUTBINNAME} libtier0 tier1  tier2 tier3 libvstdlib vgui_controls vtf )
 #target_link_libraries(${OUTBINNAME} ${LIBPUBLIC}/libsteam_api.so) # Link to proprietary steamapi
-#target_link_libraries(${OUTBINNAME} curl z ssl)
 #target_link_libraries(${OUTBINNAME} kisak_gcsdk)
-#target_link_libraries(${OUTBINNAME} libprotobuf) #from /thirdparty
 #target_link_libraries(${OUTBINNAME} bitmap dmxloader tier2)

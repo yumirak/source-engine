@@ -35,8 +35,8 @@
 #include "tf_hud_disconnect_prompt.h"
 
 #include "util_shared.h"
-#include <steamnetworkingsockets/isteamnetworkingutils.h>
-#include <steamnetworkingsockets/isteamnetworkingsockets.h>
+//#include <steamnetworkingsockets/isteamnetworkingutils.h>
+//#include <steamnetworkingsockets/isteamnetworkingsockets.h>
 #include "filesystem.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
@@ -414,6 +414,8 @@ void CTFGCClientSystem::LoadCasualSearchCriteria()
 // Initialize steam client datagram lib if we haven't already
 static bool CheckInitSteamDatagramClientLib()
 {
+	return 0;
+#if 0
 	if ( !BUseSteamDatagram() )
 		return false;
 
@@ -448,6 +450,7 @@ static bool CheckInitSteamDatagramClientLib()
 	bInittedNetwork = true;
 
 	return true;
+#endif
 }
 bool CTFGCClientSystem::Init()
 {
@@ -463,10 +466,12 @@ bool CTFGCClientSystem::Init()
 
 	// init steamdatagram system ASAP so we're more likely to have initial ping data to the clusters ready by the time
 	// we ask for it
+#if 0
 	CheckInitSteamDatagramClientLib();
+
 	if ( SteamNetworkingUtils() )
 		SteamNetworkingUtils()->CheckPingDataUpToDate( 0.0f );
-
+#endif
 	// Just loading the library starts initial pinging
 	m_bPendingPingRefresh = true;
 
@@ -777,7 +782,7 @@ void CTFGCClientSystem::Shutdown()
 
 	BaseClass::Shutdown();
 
-	SteamDatagramClient_Kill();
+	//SteamDatagramClient_Kill();
 }
 
 //-----------------------------------------------------------------------------
@@ -911,16 +916,19 @@ void CTFGCClientSystem::InvalidatePingData()
 	// Wipe all cached data.
 	m_rtLastPingFix = 0; // 0 means never. Or time traveler. 50/50.
 	m_msgCachedPingUpdate = CMsgGCDataCenterPing_Update();
-
+#if 0
 	if ( BUseSteamDatagram() && SteamNetworkingUtils() )
 	{
 		SteamNetworkingUtils()->CheckPingDataUpToDate( 0.0f );
 	}
+#endif
 }
 
 //-----------------------------------------------------------------------------
 void CTFGCClientSystem::PingThink()
 {
+	return;
+#if 0
 	ISteamNetworkingUtils *pUtils = SteamNetworkingUtils();
 	if ( !pUtils && BUseSteamDatagram() )
 	{
@@ -1050,6 +1058,7 @@ void CTFGCClientSystem::PingThink()
 	{
 		DumpPing();
 	}
+#endif
 }
 
 #ifdef TF_GC_PING_DEBUG

@@ -5796,10 +5796,13 @@ void C_TFPlayer::ShowBirthdayEffect( bool bShow )
 
 bool C_TFPlayer::HasBombinomiconEffectOnDeath( void )
 {
+	return false;
+#if 0
 	int iBombinomicomEffectOnDeath = 0;
 	CALL_ATTRIB_HOOK_INT( iBombinomicomEffectOnDeath, bombinomicon_effect_on_death );
 
 	return ( iBombinomicomEffectOnDeath != 0 );
+#endif
 }
 
 #ifdef STAGING_ONLY

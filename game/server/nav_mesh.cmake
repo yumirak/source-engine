@@ -26,7 +26,7 @@ include(${CMAKE_MODULE_PATH}/common_functions.cmake)
 			target_sources(${OUTBINNAME} PRIVATE "nav_colors.cpp")
 			#target_sources(${OUTBINNAME} PRIVATE "nav_colors.h"
 			target_sources(${OUTBINNAME} PRIVATE "nav_edit.cpp")
-			#target_sources(${OUTBINNAME} PRIVATE "nav_entities.cpp")
+			target_sources(${OUTBINNAME} PRIVATE "nav_entities.cpp")
 			#target_sources(${OUTBINNAME} PRIVATE "nav_entities.h"
 			target_sources(${OUTBINNAME} PRIVATE "nav_file.cpp")
 			target_sources(${OUTBINNAME} PRIVATE "nav_generate.cpp")

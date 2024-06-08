@@ -5,7 +5,7 @@
 // $NoKeywords: $
 //=============================================================================
 
-#include "vgui_controls/frame.h"
+#include "vgui_controls/Frame.h"
 #include "vgui_controls/ComboBox.h"
 #include "vgui_controls/RadioButton.h"
 #include "vgui_bitmappanel.h"

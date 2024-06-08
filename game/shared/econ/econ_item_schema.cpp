@@ -6189,6 +6189,7 @@ bool g_bLastSignatureCheck;
 
 bool CheckValveSignature( const void *data, uint32 nDataSize, const void *signature, uint32 nSignatureSize )
 {
+#if 0
 	// Must match the PUBLIC KEY in src\devtools\valve_source_officialcontent.privatekey.vdf
 	static const unsigned char valvePublicKey[] =
 		"\x30\x81\x9D\x30\x0D\x06\x09\x2A\x86\x48\x86\xF7\x0D\x01\x01\x01"
@@ -6211,6 +6212,8 @@ bool CheckValveSignature( const void *data, uint32 nDataSize, const void *signat
 	);
 
 	return g_bLastSignatureCheck;
+#endif
+	return true;
 }
 
 //-----------------------------------------------------------------------------
@@ -6226,7 +6229,7 @@ bool CEconItemSchema::BInit( const char *fileName, const char *pathID, CUtlVecto
 	SCHEMA_INIT_CHECK( bReadFileOK, "Cannot load file '%s'", fileName );
 
 	// Do we need to check the signature?
-	#if defined(TF_DLL) || defined(TF_CLIENT_DLL)
+	#if 0//defined(TF_DLL) || defined(TF_CLIENT_DLL)
 	{
 
 		// Load up the signature
@@ -6254,14 +6257,14 @@ bool CEconItemSchema::BInit( const char *fileName, const char *pathID, CUtlVecto
 
 		SCHEMA_INIT_CHECK( bSignatureValid, "'%s' is corrupt.  Please verify your local game files.  (https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)", fileName );
 	}
-	#endif
+
 
 	// Compute version hash
 	CSHA1 sha1;
 	sha1.Update( (unsigned char *)bufRawData.Base(), bufRawData.Size() );
 	sha1.Final();
 	sha1.GetHash( m_schemaSHA.m_shaDigest );
-
+	#endif
 	// Wrap it with a text buffer reader
 	CUtlBuffer bufText( bufRawData.Base(), bufRawData.TellPut(), CUtlBuffer::READ_ONLY | CUtlBuffer::TEXT_BUFFER );
 
@@ -6297,7 +6300,7 @@ bool CEconItemSchema::BInitTextBuffer( CUtlBuffer &buffer, CUtlVector<CUtlString
 {
 	// Save off the hash into a global variable, so VAC can check it
 	// later
-	GenerateHash( g_sha1ItemSchemaText, buffer.Base(), buffer.TellPut() );
+	//GenerateHash( g_sha1ItemSchemaText, buffer.Base(), buffer.TellPut() );
 
 	Reset();
 	m_pKVRawDefinition = new KeyValues( "CEconItemSchema" );

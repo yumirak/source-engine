@@ -20,6 +20,7 @@ include( ./client_econ_base.cmake )
 if( LINUXALL )
     target_compile_options(${OUTBINNAME} PRIVATE "-Wno-narrowing")
 endif()
+
 include_directories(${SRCDIR}/game/shared/tf)
 include_directories(${SRCDIR}/game/client/tf)
 include_directories(${SRCDIR}/game/client/tf/vgui)
@@ -28,12 +29,11 @@ include_directories(${SRCDIR}/game/shared/econ)
 include_directories(${SRCDIR}/gcsdk/steamextra)
 include_directories(${GENERATED_PROTO_DIR}/econ)
 #tf_gcmessages_include
-TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/tf/tf_gcmessages.proto "${GENERATED_PROTO_DIR}")
+TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/tf/tf_gcmessages.proto ${GENERATED_PROTO_DIR})
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/gcsystemmsgs.proto ${GENERATED_PROTO_DIR} )
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/steammessages.proto ${GENERATED_PROTO_DIR} )
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/base_gcmessages.proto ${GENERATED_PROTO_DIR} )
-#TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/econ/econ_gcmessages.proto "${GENERATED_PROTO_DIR}") //temp
-#TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/cstrike15/cstrike15_gcmessages.proto "${GENERATED_PROTO_DIR}")
+TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/econ/econ_gcmessages.proto "${GENERATED_PROTO_DIR}/econ" ) #//temp
 target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/tf/tf_gcmessages.cpp")
 
 #$Project "Client (TF)"
@@ -356,7 +356,9 @@ target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/common/GameUI/cvarslider.cpp")
 		target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/workshop/ugc_utils.cpp")
 		target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/client/steampublishedfiles/publish_file_dialog.cpp")
 		target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/client/tf/workshop/published_files.cpp")
+		if(WORKSHOP_IMPORT_ENABLE)
 		target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/client/tf/workshop/item_import.cpp")         #[$WORKSHOP_IMPORT_ENABLE]
+		endif()
 		target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/client/bsp_utils.cpp")
 
 			#$Folder	"vgui"

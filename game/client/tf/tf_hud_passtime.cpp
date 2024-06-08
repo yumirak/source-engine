@@ -908,11 +908,12 @@ void CTFHudPasstimeBallStatus::ApplySchemeSettings( IScheme *pScheme )
 	ListenForGameEvent( PasstimeGameEvents::Score::s_eventName );
 	Reset(); // this ensures players will try to guess game state for the hud if they join a game in progress
 	vgui::ivgui()->AddTickSignal( GetVPanel() );
-
+	// yumi - FIXME: SetEnabled crash when maxplayer raised from 32
+	/*
 	// find all the player icon image panels
 	{
 		char controlname[32];
-		for ( auto i = 0; i < MAX_PLAYERS; ++i ) 
+		for ( auto i = 0; i < MAX_PLAYERS; ++i )
 		{
 			V_sprintf_safe( controlname, "playericon%i", i ); // ugh
 			m_pPlayerIcons[i] = FindControl<vgui::ImagePanel>( controlname );
@@ -921,6 +922,7 @@ void CTFHudPasstimeBallStatus::ApplySchemeSettings( IScheme *pScheme )
 			m_pPlayerIcons[i]->SetShouldScaleImage( true );
 		}
 	}
+	*/
 }
 
 //-----------------------------------------------------------------------------

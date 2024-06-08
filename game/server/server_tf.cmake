@@ -20,13 +20,18 @@ include_directories(${SRCDIR}/game/shared/tf)
 include_directories(${SRCDIR}/game/server/tf)
 include_directories(${SRCDIR}/game/server/NextBot)
 include_directories(${SRCDIR}/game/shared/Multiplayer)
+include_directories(${SRCDIR}/game/server/econ)
+include_directories(${SRCDIR}/game/shared/econ)
 include_directories(${GENERATED_PROTO_DIR}/econ)
 
-TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/tf/tf_gcmessages.proto "${GENERATED_PROTO_DIR}")
+
+TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/tf/tf_gcmessages.proto ${GENERATED_PROTO_DIR})
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/gcsystemmsgs.proto ${GENERATED_PROTO_DIR} )
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/gcsdk/steammessages.proto ${GENERATED_PROTO_DIR} )
 TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/base_gcmessages.proto ${GENERATED_PROTO_DIR} )
-#TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/econ/econ_gcmessages.proto ${GENERATED_PROTO_DIR} )
+TargetBuildAndAddProto( ${OUTBINNAME} ${SRCDIR}/game/shared/econ/econ_gcmessages.proto ${GENERATED_PROTO_DIR}/econ ) #//temp
+
+target_sources(${OUTBINNAME} PRIVATE "${SRCDIR}/game/shared/tf/tf_gcmessages.cpp")
 #$Include "${SRCDIR}/game/server/server_base.vpc"
 #$Include "${SRCDIR}/game/server/server_econ_base.vpc"
 #$include "${SRCDIR}/game/shared/tf/tf_gcmessages_include.vpc"

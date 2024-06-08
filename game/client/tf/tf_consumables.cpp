@@ -2137,7 +2137,7 @@ public:
 			wchar_t wszPlayerName[MAX_PLAYER_NAME_LENGTH];
 			char szPlayerName[ MAX_PLAYER_NAME_LENGTH ];
 
-			GetPlayerNameBySteamID( msg.Body().player_steamid(), szPlayerName, sizeof( szPlayerName ) );
+			GetPlayerNameBySteamID( uint64( msg.Body().player_steamid() ), szPlayerName, sizeof( szPlayerName ) );
 			g_pVGuiLocalize->ConvertANSIToUnicode( szPlayerName, wszPlayerName, sizeof( wszPlayerName ) );
 
 			// Item

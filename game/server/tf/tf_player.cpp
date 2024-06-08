@@ -181,6 +181,7 @@ EHANDLE	g_hTestSub;
 
 ConVar tf_playerstatetransitions( "tf_playerstatetransitions", "-2", FCVAR_CHEAT | FCVAR_DEVELOPMENTONLY, "tf_playerstatetransitions <ent index or -1 for all>. Show player state transitions." );
 ConVar tf_playergib( "tf_playergib", "1", FCVAR_NOTIFY, "Allow player gibbing. 0: never, 1: normal, 2: always", true, 0, true, 2 );
+ConVar tf_player_drop_weapon( "tf_player_drop_weapon", "1", FCVAR_NOTIFY, "Allow player drop weapon when died.", true, 0, true, 1 );
 
 ConVar tf_damageforcescale_other( "tf_damageforcescale_other", "6.0", FCVAR_CHEAT | FCVAR_DEVELOPMENTONLY );
 ConVar tf_damageforcescale_self_soldier_rj( "tf_damageforcescale_self_soldier_rj", "10.0", FCVAR_CHEAT | FCVAR_DEVELOPMENTONLY );
@@ -10455,10 +10456,13 @@ bool CTFPlayer::ShouldGib( const CTakeDamageInfo &info )
 //-----------------------------------------------------------------------------
 bool CTFPlayer::HasBombinomiconEffectOnDeath( void )
 {
+	return false;
+#if 0
 	int iBombinomicomEffectOnDeath = 0;
 	CALL_ATTRIB_HOOK_INT( iBombinomicomEffectOnDeath, bombinomicon_effect_on_death );
 
 	return ( iBombinomicomEffectOnDeath != 0 );
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -12593,10 +12597,14 @@ void CTFPlayer::DropAmmoPack( const CTakeDamageInfo &info, bool bEmpty, bool bDi
 	CEconItemView *pItem = pDropWeaponProps->GetAttributeContainer()->GetItem();
 	bool bIsSuicide = info.GetAttacker() ? info.GetAttacker()->GetTeamNumber() == GetTeamNumber() : false;
 
-	CTFDroppedWeapon *pDroppedWeapon = CTFDroppedWeapon::Create( this, vecPackOrigin, vecPackAngles, pszWorldModel, pItem );
-	if ( pDroppedWeapon )
+
+	if ( tf_player_drop_weapon.GetBool() )
 	{
-		pDroppedWeapon->InitDroppedWeapon( this, pDropWeaponProps, false, bIsSuicide );
+		CTFDroppedWeapon *pDroppedWeapon = CTFDroppedWeapon::Create( this, vecPackOrigin, vecPackAngles, pszWorldModel, pItem );
+		if ( pDroppedWeapon )
+		{
+			pDroppedWeapon->InitDroppedWeapon( this, pDropWeaponProps, false, bIsSuicide );
+		}
 	}
 
 	// Create the ammo pack.

@@ -1942,7 +1942,7 @@ bool C_BasePlayer::InFirstPersonView()
 		return false;
 	}
 	// If this is who we're observing in first person, it's counted as the "local" player.
-	if ( pLocalPlayer->GetObserverMode() == OBS_MODE_IN_EYE && pLocalPlayer->GetObserverTarget() == ToBasePlayer(this) )
+	if ( pLocalPlayer->GetObserverMode() == OBS_MODE_IN_EYE && pLocalPlayer->GetObserverTarget() == this )
 	{
 		return LocalPlayerInFirstPersonView();
 	}
